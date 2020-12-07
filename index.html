@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" integrity="sha512-CIYsJUa3pr1eoXlZFroEI0mq0UIMUqNouNinjpCkSWo3Bx5NRlQ0OuC6DtEB/bDqUWnzXc1gs2X/g52l36N5iw==" crossorigin="anonymous" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <title>Ganafy: Free Music Player</title>
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Peddana&display=swap');
+
+
+    body{
+        background-color: #131646;
+        /* font-family: 'Open Sans'; */
+      
+    }
+  
+
+.intro{
+height: 100vh;
+width: 100vw;
+align-content: center;
+justify-content: center;
+align-items: center;
+background-color: #131646 ;
+display: flex;
+flex-direction: column;
+padding: 0;
+margin: 0;
+
+
+}
+.animate__animated.animate__fadeInUpBig{
+    animation-duration: 1.5s;
+}
+.animate__animated.animate__rotateIn{
+    animation-duration: 2s;
+}
+.animate__animated.animate__zoomIn{
+    animation-duration: 2s;
+    animation-delay: 1s;
+}
+ 
+.player{
+    visibility: hidden;
+}
+
+
+         
+
+
+
+/* player hidden */
+#aplayer{
+    position: fixed;
+   /* background-color: #E32155; */
+    left: 0;
+    width: 100%;
+    margin: 0;
+    /* box-shadow: 0 -2px 2px #909090; */
+    /* background-color: rgb(231, 225, 225);
+     */
+     background-color: #E32155;
+    transition: all ease 0.5s;
+  height: 100%;
+  top: 0px;
+    }
+/* trasformation */
+
+#intro.hide{
+    display: none;
+}
+
+
+
+#player.show{
+    visibility: visible;
+}
+
+
+
+
+
+/* player designing */
+.aplayer .aplayer-list ol li .aplayer-list-index{
+
+    color: pink !important;
+}
+.aplayer .aplayer-list ol li .aplayer-list-author
+{
+    color: pink !important;
+}
+
+button.aplayer-icon.aplayer-icon-menu{
+    display: none;
+}
+
+.aplayer .aplayer-list ol{
+    max-height: 210px !important;
+}
+
+.aplayer .aplayer-info .aplayer-music .aplayer-title {
+    font-size: 1.4rem;
+    color: white;
+}
+
+.aplayer .aplayer-info .aplayer-music .aplayer-author {
+    font-size: 20px;
+    color: #384284;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-time {
+    position: relative;
+    right: 0;
+    bottom: 10px;
+    height: 17px;
+    color: #384284;
+    font-size: 5px;
+    padding-left: 2px;
+}
+
+/* music player styling */
+span{
+    /* color: rebeccapurple !important; */
+    font-size: 1.4rem;
+    font-family:  'Peddana', serif;
+}
+
+.aplayer-list-title{
+    color:white;
+    /* font-weight: bold; */
+}
+
+
+
+
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded{
+    background-color: white;
+    height: 5px;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played{
+    background-color: #E32155 !important;
+    height: 5px;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb{
+    background-color: #2b2b2b !important;
+
+}
+
+
+.aplayer .aplayer-icon path {
+
+    fill: #384284 !important;
+}
+
+
+.aplayer .aplayer-list ol li.aplayer-list-light{
+    background-color: #ff517f;
+    border-radius: 10px;
+}
+/* player  center*/
+.aplayer .aplayer-pic {
+    position: relative;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    background-size: cover;
+    background-position: 50%;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* justify-items: center; */
+    /* align-content: center; */
+    /* left: 25%; */
+    /* right: 25%; */
+    margin:10px auto 0px;
+    transition: all .5s ease;
+    cursor: pointer;
+    border-radius: 15%;
+    float: none;
+    box-shadow: 0px 3px 20px 10px rgba(0,0,0,0.4);
+ }
+.aplayer .aplayer-body {
+    position: relative;
+    border-radius: 0 0 25px 25px;
+    background-color: #131646;
+    /* margin-top: 0px !important;  */
+    /* align-items: center; */
+    justify-content: center;
+    display: flex;
+    /* background-color: black; */
+    flex-direction: column;
+    margin: 0px auto 5px ;
+    padding: 0 3px 5px 3px;
+    /* padding: 0; */
+    /* width: 100vw; */
+    /* align-content: center; */
+}
+
+.aplayer.aplayer-withlist .aplayer-list {
+    background-color:#E32155;
+    display: block;
+   
+}
+
+.aplayer .aplayer-pic:hover{
+    opacity: 0.80;
+}
+
+
+
+
+/* nav bar fixed */
+/* .navbar{
+    overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 0;
+} */
+
+.aplayer.aplayer-withlist .aplayer-info {
+    border-bottom: none;
+}
+.aplayer .aplayer-info{
+    margin-left: 0px;
+}
+
+.aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap {
+    max-width: 80%;
+}
+
+
+ </style>
+  </head>
+
+
+  <body>
+
+<section class="intro" id="intro">
+    <img src="logo1.png" alt="logo" style="width: 250px;" id="logo" class="animate__animated animate__rotateIn">
+    <img src="name2.png" alt="Ganafy" style="width: 250px; min-height: 110px;" id="name" class="animate__animated animate__fadeInUpBig">
+    <p class="animate__animated animate__zoomIn" style="color: rgb(156, 156, 156);" >Created by: Arpit Alkari</p>
+</section>
+
+<div class="player" id="player">
+<!-- <div class="player" id="player">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2d2d42; z-index: 0;">
+    <a class="navbar-brand" href="#" style="color: #edf4f7">Ganafy</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav" >
+        <a style="color: #edf4f7;" class="nav-link active"  href="#">Home <span class="sr-only">(current)</span></a>
+        <a style="color: #edf4f7;" class="nav-link" href="#" >About</a>
+        <a style="color: #edf4f7;" class="nav-link" href="#" >Contact</a>
+        </div>
+        </nav>
+</div>  -->
+  
+
+
+
+
+
+
+ <div id="aplayer" style="height: 100vh; margin: 0px; padding: 0px;"></div>
+
+      
+</div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js" integrity="sha512-RWosNnDNw8FxHibJqdFRySIswOUgYhFxnmYO3fp+BgCU7gfo4z0oS7mYFBvaa8qu+axY39BmQOrhW3Tp70XbaQ==" crossorigin="anonymous"></script>
+    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    -->
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.min.js" integrity="sha512-mMe7BAZPOkGbq+zhRBMNV3Q+5ZDzcUEOJoUYXbHpEcODkDBYbttaW7P108jX66AQgwgsAjvlP4Ayb/XLJZfmsg==" crossorigin="anonymous"></script> -->
+
+    <script> 
+
+
+
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            theme: '#e9e9e9',
+            listfolded:true,
+            audio:
+        [
+            {
+            name: 'AAftaab',
+            artist: 'The Local Train',
+            url: 'tracks/aaftab.mp3',
+            cover: 'img/loccal.jpg'
+            },
+
+
+            {
+            name: 'Aaoge Tum Kabhi',
+            artist: 'The Local Train',
+            url: 'tracks/aaoge tum kabhi.mp3',
+            cover: 'img/loccal.jpg'
+            },
+        
+            
+            {
+            name: 'Aarambh',
+            artist: 'Piyush Mishra',
+            url: 'tracks/aarambh.mp3',
+            cover: 'img/blank.png'
+            },
+
+            
+            {
+            name: 'Alag Aasmaan',
+            artist: 'Anuv Jain',
+            url: 'tracks/alag aasman.mp3',
+            cover: 'img/alagaasmaan.png'
+            },
+
+            {
+            name: 'Arziyaan',
+            artist: 'A. R. Rehman',
+            url: 'tracks/arziyaan.mp3',
+            cover: 'img/ar.jpg'
+            },
+
+            {
+            name: 'Baatein Karo',
+            artist: 'Vayu',
+            url: 'tracks/baatein karo.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+            {
+            name: 'Bhaag DK Bose',
+            artist: 'Ram Sampath',
+            url: 'tracks/bhaag dk bose.mp3 ',
+            cover: 'img/blank.png'
+            },
+
+            {
+            name: 'Chandaniyaa',
+            artist: 'shankar-Ehsaan-Loy',
+            url: 'tracks/chaandaniya.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+            {
+            name: 'Chalo Chalein',
+            artist: 'Ritviz',
+            url: 'tracks/chalo chalein.mp3 ',
+            cover: 'img/rivitz.jpg '
+            },
+
+
+            {
+            name: 'Chaubaare',
+            artist: 'Sunny MR',
+            url: 'tracks/chaubaare.mp3 ',
+            cover: 'img/blank.png'
+            },
+
+
+            {
+            name: 'Choo Lo',
+            artist: 'The Local Train',
+            url: 'tracks/choo lo.mp3 ',
+            cover: 'img/loccal.jpg '
+            },
+
+            {
+            name: 'Dil Beparwah',
+            artist: 'Prateek Khuhad',
+            url: 'tracks/dil beparwah.mp3 ',
+            cover: 'img/prateek.jpg '
+            },
+
+
+            {
+            name: 'Dil Hai Chota Sa',
+            artist: 'A. R. Rehman',
+            url: 'tracks/dil hai chota sa.mp3 ',
+            cover: 'img/ar.jpg '
+            },
+
+
+            {
+            name: 'Dil Mere',
+            artist: 'The Local Train',
+            url: 'tracks/dil mere.mp3',
+            cover: 'img/loccal.jpg '
+            },
+
+
+            {
+            name: 'Dil Na Janeya',
+            artist: 'Arijit Singh',
+            url: 'tracks/dil na janeya.mp3 ',
+            cover: 'img/arijit.jpg '
+            },
+
+
+            {
+            name: 'Dil Toh Bachcha Hai Ji',
+            artist: 'Vishal Bharadwaj',
+            url: 'tracks/dil to bachcha hai ji.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+
+            {
+            name: 'Dooba Dooba',
+            artist: 'Mohit Chauan',
+            url: 'tracks/dooba dooba.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+
+            {
+            name: 'Emptiness',
+            artist: 'Gajendra Verma',
+            url: 'tracks/emptiness.mp3 ',
+            cover: 'img/gajendra verma.jpg '
+            },
+
+
+            {
+            name: 'Hossaana',
+            artist: 'A. R. Rehman',
+            url: 'tracks/hossana.mp3 ',
+            cover: 'img/ar.jpg '
+            },
+
+
+            {
+            name: 'Iktara',
+            artist: 'Amit Trivedi',
+            url: 'tracks/iktara.mp3 ',
+            cover: 'img/amit.jpg '
+            },
+
+            {
+            name: 'Jeet',
+            artist: 'Ritviz',
+            url: 'tracks/jeet.mp3 ',
+            cover: 'img/rivitz.jpg '
+            },
+
+            {
+            name: 'Kasoor',
+            artist: 'Prateek Kuhad',
+            url: 'tracks/kasoor.mp3 ',
+            cover: 'img/prateek.jpg '
+            },
+
+            {
+            name: 'Kho Gaye Hum Kaha',
+            artist: 'Prateek Kuhad/Jasleen R.',
+            url: 'tracks/kho gaye hum.mp3 ',
+            cover: 'img/jasleen-royal.jpg '
+            },
+
+
+            {
+            name: 'Kun Faya',
+            artist: 'A.R. Rehman',
+            url: 'tracks/kun faya.mp3 ',
+            cover: 'img/ar.jpg '
+            },
+
+            {
+            name: 'Liggi',
+            artist: 'Ritviz',
+            url: 'tracks/liggi.mp3 ',
+            cover: 'img/rivitz.jpg '
+            },
+
+            {
+            name: 'Love You Zindagi',
+            artist: 'Jasleen R.',
+            url: 'tracks/love you zindagi.mp3',
+            cover: 'img/jasleen-royal.jpg '
+            },
+
+            {
+            name: 'Maan Mera',
+            artist: 'Grajendra Verma',
+            url: 'tracks/man mera.mp3 ',
+            cover: 'img/gajendra verma.jpg '
+            },
+
+            {
+            name: 'Memories',
+            artist: 'Maroon 5',
+            url: 'tracks/memories.mp3 ',
+            cover: 'img/maroon.jpg '
+            },
+
+
+            {
+            name: 'Namo Namo',
+            artist: 'Amit trivedi',
+            url: 'tracks/namo namo.mp3 ',
+            cover: 'img/amit.jpg '
+            },
+
+
+            {
+            name: 'Nit Nit',
+            artist: 'Jasleen R.',
+            url: 'tracks/nit nit.mp3 ',
+            cover: 'img/jasleen-royal.jpg '
+            },
+
+
+            {
+            name: 'O Sanam',
+            artist: 'Lucky Ali',
+            url: 'tracks/o sanam.mp3 ',
+            cover: 'img/LuckyAli.jpg '
+            },
+
+
+            {
+            name: 'Saansein',
+            artist: 'Prateek Kuhad',
+            url: 'tracks/saansein.mp3 ',
+            cover: 'img/prateek.jpg '
+            },
+
+            {
+            name: 'Saware',
+            artist: 'Arijit Singh',
+            url: 'tracks/saware.mp3 ',
+            cover: 'img/arijit.jpg '
+            },
+
+            {
+            name: 'Something Just Like This',
+            artist: 'Coldplay/Chanismoker',
+            url: 'tracks/something just like this.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+            {
+            name: 'Tinka Tinka',
+            artist: 'Yashraj Mukhate',
+            url: 'tracks/tinka tinka.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+            {
+            name: 'Tu Aashiqui Hai',
+            artist: 'KK',
+            url: 'tracks/tu aashiqui hai.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+            {
+            name: 'Tu Hi Re',
+            artist: 'Hariharan',
+            url: 'tracks/tu hi re.mp3 ',
+            cover: 'img/ar.jpg '
+            },
+
+            {
+            name: 'Tum Jab Pass',
+            artist: 'Prateek Kuhad',
+            url: 'tracks/tum jab pass.mp3 ',
+            cover: 'img/prateek.jpg '
+            },
+
+            {
+            name: 'Tum Saath Rehna',
+            artist: 'King',
+            url: 'tracks/tum saath rehna.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+            {
+            name: 'Tune Kaha',
+            artist: 'Prateek Kuhad',
+            url: 'tracks/tune kaha.mp3 ',
+            cover: 'img/prateek.jpg '
+            },
+
+            {
+            name: 'Udd Gaye',
+            artist: 'Ritviz',
+            url: 'tracks/udd gaye.mp3 ',
+            cover: 'img/rivitz.jpg '
+            },
+
+            {
+            name: 'Chor Aayega',
+            artist: 'Kabir Cafe',
+            url: 'tracks/Chor Aayega.mp3',
+            cover: 'img/Kabir.jpg '
+            },
+
+            {
+            name: 'Fakiri',
+            artist: 'Kabir Cafe',
+            url: 'tracks/Fakiri.mp3 ',
+            cover: 'img/Kabir.jpg '
+            },
+
+            {
+            name: 'Jahaan Tu Chala',
+            artist: 'Jasleen Royal',
+            url: 'tracks/Jaahaan Tu Chala.mp3 ',
+            cover: 'img/jasleen-royal.jpg '
+            },
+
+            {
+            name: 'Kya Leke Aaya',
+            artist: 'Kabir Cafe',
+            url: 'tracks/Kya leke Aaya.mp3 ',
+            cover: 'img/Kabir.jpg '
+            },
+
+            {
+            name: 'Main Bola Hey',
+            artist: 'Kota Factory',
+            url: 'tracks/Main Bola Hey.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+            {
+            name: 'Matkar Maya',
+            artist: 'Kabir Cafe',
+            url: 'tracks/Matkar Maya ko Ahankaar.mp3 ',
+            cover: 'img/Kabir.jpg '
+            },
+
+            {
+            name: 'Qismat ki Hawa',
+            artist: 'Ludo',
+            url: 'tracks/Qismat ki hawa.mp3 ',
+            cover: 'img/blank.png '
+            },
+
+            {
+            name: 'Sang Rahiyo',
+            artist: 'Jasleen Royal',
+            url: 'tracks/Sang Rahiyo.mp3 ',
+            cover: 'img/jasleen-royal.jpg '
+            },
+
+            {
+            name: 'Yeh Pal',
+            artist: 'Prateek Kuhad',
+            url: 'tracks/Yeh Pal.mp3 ',
+            cover: 'img/prateek.jpg '
+            },
+
+            // {
+            // name: '',
+            // artist: '',
+            // url: 'tracks/ ',
+            // cover: 'img/ '
+            // },
+
+            // {
+            // name: '',
+            // artist: '',
+            // url: 'tracks/ ',
+            // cover: 'img/ '
+            // },
+        ]
+        });
+
+
+
+
+
+
+
+    </script>
+
+
+<script>
+ list =   document.querySelector("#aplayer > div.aplayer-body > div.aplayer-info > div.aplayer-controller > div.aplayer-time > button.aplayer-icon.aplayer-icon-menu")
+list.style.display ='none';
+</script>
+ 
+
+
+
+<script>
+let intro = document.getElementById('intro')
+let player = document.getElementById('player')
+setTimeout(() => {
+    intro.classList='hide';
+    player.classList='show';
+    player.classList="animate__animated animate__fadeInUpBig"
+}, 3500);
+
+
+</script>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
+
